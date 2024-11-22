@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Books Library</title>
+</head>
+<body>
+
+{% include 'partials/nav.html' %}
+
+<h1>Books Library</h1>
+
+
+
+{% if books and books|length >= 1 %}
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Author</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.year }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.title }}</td>
+                <td>
+                    <a href="/readbook/{{ loop.index0 }}"><button>Read: {{ book.title }}</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Unfortunately, you haven't added any books yet. Can you help us fill our library?</p>
+    <a href="/insertBooks"><button>Add Books!</button></a>
+{% endif %}
+
+
+
+
+</body>
+</html>
