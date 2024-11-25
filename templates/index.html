@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Library</title>
+</head>
+<body>
+{% include 'partials/nav.html' %}
+
+
+<h2>Welcome to The Selections Labs Library</h2>
+
+{% if books and books|length >= 1 %}
+<p>You have saved our library, please enjoy the collection! And feel free to add more books and grow our knowledge </p>
+{% else %}
+<p>Please save our library and add some books. Knowledge is power, and with this knowledge, we can grow our company.</p>
+{% endif %}
+
+<a href="/insertBooks"><button>Add books</button></a>
+<a href="/library"><button>View books</button></a>
+
+
+</body>
+</html>
